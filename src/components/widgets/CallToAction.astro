@@ -1,57 +1,57 @@
 ---
+import { Icon } from 'astro-icon/components';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import type { CallToAction, Widget } from '~/types';
-import Headline from '~/components/ui/Headline.astro';
-import Button from "~/components/ui/Button.astro"
+import Headline from '../ui/Headline.astro';
 
 interface Props extends Widget {
   title?: string;
   subtitle?: string;
   tagline?: string;
   callToAction?: CallToAction;
-  actions?: string | CallToAction[];
 }
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
-  actions = await Astro.slots.render('actions'),
+  callToAction = await Astro.slots.render('callToAction'),
 
   id,
-  isDark = false,
+  // isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props as Props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper id={id} containerClass={`max-w-6xl mx-auto  ${classes?.container ?? ''}`} bg={bg}>
   <div
-    class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
+    class="flex flex-col md:flex-row justify-between items-center m-0 mx-auto bg-blue-600 rounded py-8  md:py-14 shadow-2xl max-w-5xl"
   >
     <Headline
       title={title}
       subtitle={subtitle}
       tagline={tagline}
       classes={{
-        container: 'mb-0 md:mb-0',
-        title: 'text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading',
-        subtitle: 'text-xl text-muted dark:text-slate-400',
+        container: ' mb-0 md:mb-0 !text-left',
+        title: 'text-3xl md:text-3xl font-bold text-white max-w-sm  text-center md:text-left md:-ml-[100px]',
+        subtitle: 'text-lg text-white opacity-75',
       }}
     />
     {
-      actions && (
-        <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">
-          {Array.isArray(actions) ? (
-            actions.map((action) => (
-              <div class="flex w-full sm:w-auto">
-                <Button {...(action || {})} class="w-full sm:mb-0" />
-              </div>
-            ))
-          ) : (
-            <Fragment set:html={actions} />
-          )}
-        </div>
+      typeof callToAction === 'string' ? (
+        <Fragment set:html={callToAction} />
+      ) : (
+        callToAction &&
+        callToAction.text &&
+        callToAction.href && (
+          <div class="mt-6 md:mt-0 max-w-xs mx-auto ">
+            <a class=" btn outline-none border-none text-blue-600 bg-white/90 hover:bg-blue-700 rounded-[4px] md:-mr-[100px] text-sm w-34 h-11" href={callToAction.href} target="_blank" rel="noopener">
+              {callToAction.icon && <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" />}
+              {callToAction.text}
+            </a>
+          </div>
+        )
       )
     }
   </div>

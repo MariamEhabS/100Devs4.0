@@ -83,6 +83,7 @@ const DEFAULT_SITE_NAME = 'Website';
 const getSite = () => {
   const _default = {
     name: DEFAULT_SITE_NAME,
+    logo: '/images/logo.svg',
     site: undefined,
     base: '/',
     trailingSlash: false,

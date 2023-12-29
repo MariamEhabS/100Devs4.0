@@ -1,0 +1,125 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE_CONFIG } from '~/utils/config';
+import { getHomePermalink } from '~/utils/permalinks';
+import Logo from '../Logo.astro';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+interface Links {
+  title?: string;
+  links: Array<Link>;
+}
+
+export interface Props {
+  links: Array<Links>;
+  secondaryLinks: Array<Link>;
+  socialLinks: Array<Link>;
+  footNote?: string;
+  theme?: string;
+}
+
+const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+---
+
+<footer class=' max-w-5xl m-0 mx-auto relative  not-prose'>
+  <!-- <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div> -->
+  <div class="relative mx-auto px-4 sm:px-6  ">
+    <div class="grid sm:grid-cols-12 gap-8 py-8 md:py-12   border-t border-b  border-gray-200">
+      <div class="sm:col-span-12 lg:col-span-3">
+        <div class="mb-2">
+          <Logo />
+        </div>
+        <div class="flex flex-row w-max text-muted ">
+          {
+            secondaryLinks.map(({ text, href }) => (
+              <a
+                class=" m-0 mx-auto text-sm text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2"
+                href={href}
+                set:html={text}
+              />
+            ))
+          }
+        </div>
+      </div>
+      {
+        links.map(({ title, links }) => (
+          <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 ">
+            <div class=" font-medium mb-2 text-sm">{title}</div>
+            {links && Array.isArray(links) && links.length > 0 && (
+              <ul class="text-xs font-medium">
+                {links.map(({ text, href, ariaLabel }) => (
+                  <li class="mb-2">
+                    <a
+                      class="text-muted hover:text-gray-700 hover:underline  transition duration-150 ease-in-out"
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      <Fragment set:html={text} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+            
+          </div>
+        ))
+        
+      }
+      <div class="sm:col-span-6 md:col-span-3 lg:col-span-3">
+				<h6 class="text-gray-800 font-medium mb-2 text-sm">Subscribe</h6>
+				<p class="text-xs text-gray-600 mb-4">Get the latest news and articles to your inbox every month.</p>
+				<form>
+					<div class="flex flex-wrap mb-4">
+						<div class="w-full">
+							<label class="block text-sm sr-only" for="newsletter">Email</label>
+							<div class="relative flex items-center max-w-xs">
+								<input id="newsletter" type="email" class="form-input w-full text-gray-800 px-3 py-2 pr-12 text-[0.6rem] border border-gray-200" placeholder="Your email" required />
+								<button type="submit" class="absolute inset-0 left-auto" aria-label="Subscribe">
+									<span class="absolute inset-0 right-auto w-px -ml-px my-2 bg-gray-300" aria-hidden="true"></span>
+								  	<svg class="w-2 h-2 fill-current text-blue-600 mx-3 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+										<path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fill-rule="nonzero" />
+									</svg>
+								</button>
+							</div>
+							<!-- Success message -->
+							<!-- <p class="mt-2 text-green-600 text-sm">Thanks for subscribing!</p> -->
+						</div>
+					</div>
+				</form>
+			</div>
+    </div>
+    
+    <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
+      {
+        socialLinks?.length ? (
+          <ul class="flex gap-3 mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
+            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+              <li>
+                <a
+                  class="text-muted border border-gray-200  hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-full text-sm p-1 inline-flex items-center"
+                  aria-label={ariaLabel}
+                  href={href}
+                >
+                  {icon && <Icon name={icon} class="w-4 h-4" />}
+                  <Fragment set:html={text} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          ''
+        )
+      }
+
+      <div class="mr-4 ">
+        <Fragment set:html={footNote} />
+      </div>
+    </div>
+  </div>
+</footer>

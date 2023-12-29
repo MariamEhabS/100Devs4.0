@@ -1,0 +1,126 @@
+
+
+<!-- ---
+import Headline from '~/components/ui/Headline.astro';
+import FaqItemGrid from '~/components/ui/FaqItemGrid.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { Faqs } from '~/types';
+
+const {
+  title = '',
+  subtitle = '',
+  tagline = '',
+  items = [],
+  columns = 2,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props as Faqs;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+  <FaqItemGrid
+    items={items}
+    columns={columns}
+    defaultIcon="tabler:arrow-down-right"
+    classes={{
+      container: `${columns === 1 ? 'max-w-4xl' : ''} gap-y-8 md:gap-y-12`,
+      panel: 'max-w-none',
+      icon: '"w-7 h-7 text-blue-500 inline-block icon-bold',
+    }}
+  />
+</WidgetWrapper> -->
+
+
+---
+
+export const faqs = [
+	[
+		{
+			id:1,
+			question: 'What is #100Devs?',
+			answer: `An online, free, 30 week bootcamp, meant to bring you from zero programming skills to employable taught by Leon Noel. Please join our Discord for the most up to date information.`,
+		},{
+			id:2,
+			question: "When and where are classes hosted?",
+			answer: `Tuesdays & Thursdays, 6:30PM - 9:30PM Eastern Time. They are hosted live on Twitch.
+			
+			Any variations from schedule will be announced in advance. Please keep an eye on the announcements channel of the discord and on your email.`,
+		},{
+			id:3,
+			question: 'How to install the Astro + Tailwind CSS template?',
+			answer: `Well, the way they make shows is, they make one show. That show's called a pilot.
+
+   			 Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.`,
+		},{
+			id:4,
+			question: 'What is something that you would really like to try again?',
+			answer: `A business big enough that it could be listed on the NASDAQ goes belly up. Disappears!
+
+      		It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.`,
+		},{
+			id:5,
+			question: "What's something that you completely don't understand?",
+			answer: `A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.`,
+		},{
+			id:6,
+			question: 'If you could only ask one question to each person you meet, what would that question be?',
+			answer: `This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.`,
+		},{
+			id:7,
+			question: 'How much wood, would a wood chuck, chuck, if a wood chuck, could chuck, wood?',
+			answer: `About 13.`
+		},
+	]
+];
+---
+
+<section class="">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="pt-32 pb-12 md:pt-40 md:pb-10">
+            <!-- Section header -->
+            <div class="max-w-3xl mx-auto text-center pb-12">
+                <h1 class="!text-[2.2rem] font-bold mb-4" data-aos="zoom-y-out">Frequently Asked Questions</h1>
+            </div>
+
+            <!-- Privacy Policy drop downs -->
+            <div class=""  data-aos="zoom-y-out" >
+				{
+				faqs.map((item) => (
+					<div id="accordion-collapse" data-accordion="collapse">
+						{
+							item.map(({question, answer, id}) => (
+								<div data-aos="zoom-y-out" data-aos-delay={250} class=" aos.animate" >
+									<h2 id={`accordion-collapse-heading-${id}`} class="!mt-4">
+										<button type="button" class={`flex items-center justify-between w-full !bg-white p-5 font-medium 	text-left !text-black border border-gray-200 hover:!bg-blue-100 focus:font-bold `} data-accordion-target={`#accordion-collapse-body-${id}`} aria-expanded="false" aria-controls={`accordion-collapse-body-${id}`}>
+											<span>{question}</span>
+											<svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+											</svg>
+										</button>
+									</h2>
+								<div id={`accordion-collapse-body-${id}`} class="hidden" aria-labelledby={`accordion-collapse-heading-${id}`}>
+									<div class="p-5 border border-gray-200 bg-white ">
+										<p class="mb-2 text-gray-700 text-base">{answer}</p>
+									</div>
+								</div>
+							</div>
+						))
+						}
+                    </div>
+                ))
+                }
+                <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+            </div>
+			<h1 class="m-0 mx-auto w-max mt-10">
+				<a 
+					href="/faq" 
+					class="btn !rounded-lg text-white bg-blue-600 hover:bg-blue-700 w-max !text-sm">See more FAQs</a>	
+			</h1>
+		</div>
+
+    </div>
+</section>

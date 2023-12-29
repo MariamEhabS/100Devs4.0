@@ -18,6 +18,8 @@
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.16",
+    "@img/sharp-win32-x64": "^0.33.1",
+    "aos": "^2.3.4",
     "astro": "^4.0.3",
     "astro-icon": "^1.0.0-next.2",
     "limax": "4.1.0",

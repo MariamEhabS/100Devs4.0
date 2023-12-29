@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Button from '~/components/ui/Button.astro';
+import CTA from '~/components/ui/CTA.astro';
 import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Pricing } from '~/types';
@@ -12,51 +12,51 @@ const {
   prices = [],
 
   id,
-  isDark = false,
+  // isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props as Pricing;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper id={id}  containerClass={`max-w-5xl mx-auto  ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <div class="flex items-stretch justify-center">
-    <div class="grid grid-cols-3 gap-4 dark:text-white sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+  <div class="flex items-stretch justify-center ">
+    <div class="grid grid-cols-4  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-6">
       {
         prices &&
           prices.map(({ title, subtitle, price, period, items, callToAction, hasRibbon = false, ribbonTitle }) => (
-            <div class="col-span-3 mx-auto flex w-full sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1">
+            <div class={`col-span-4 mx-auto flex  sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1`}>
               {price && period && (
-                <div class="rounded-lg backdrop-blur border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow px-6 py-8 flex w-full max-w-sm flex-col justify-between text-center">
-                  {hasRibbon && ribbonTitle && (
-                    <div class="absolute right-[-5px] 2xl:right-[-8px] rtl:right-auto rtl:left-[-8px] rtl:2xl:left-[-10px] top-[-5px] 2xl:top-[-10px] z-[1] h-[100px] w-[100px] overflow-hidden text-right">
-                      <span class="absolute top-[19px] right-[-21px] rtl:right-auto rtl:left-[-21px] block w-full rotate-45 rtl:-rotate-45 bg-green-700 text-center text-[10px] font-bold uppercase leading-5 text-white shadow-[0_3px_10px_-5px_rgba(0,0,0,0.3)] before:absolute before:left-0 before:top-full before:z-[-1] before:border-[3px] before:border-r-transparent before:border-b-transparent before:border-l-green-800 before:border-t-green-800 before:content-[''] after:absolute after:right-0 after:top-full after:z-[-1] after:border-[3px] after:border-l-transparent after:border-b-transparent after:border-r-green-800 after:border-t-green-800 after:content-['']">
-                        {ribbonTitle}
-                      </span>
+                <div class={`flex flex-col rounded-[4px] backdrop-blur border-2 border-white   bg-white shadow-xl px-5 py-5 w-full  justify-between text-center  ${hasRibbon && ribbonTitle && '!border-blue-600 !bg-blue-100'}`}>
+                  {hasRibbon && (
+                    <div class="absolute top-0 right-0 mr-5 p-3 -mt-5 bg-yellow-500 rounded-full">
+                      <svg class="w-3 h-3 fill-current text-white" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.145 5.05l-4.316-.627L8.898.513c-.338-.684-1.456-.684-1.794 0l-1.93 3.91-4.317.627a1.002 1.002 0 00-.554 1.707l3.124 3.044-.737 4.3a1 1 0 001.45 1.053L8 13.125l3.862 2.03c.728.381 1.59-.234 1.45-1.054l-.736-4.299L15.7 6.758a1.003 1.003 0 00-.555-1.708z" />
+                      </svg>
                     </div>
                   )}
-                  <div class="px-2 py-0">
+                  <div class="border-b border-b-gray-200 mb-6">
                     {title && (
-                      <h3 class="text-center text-xl font-semibold uppercase leading-6 tracking-wider mb-2">{title}</h3>
+                      <h3 class="text-left !text-base font-bold ">{title}</h3>
                     )}
-                    {subtitle && <p class="font-light sm:text-lg text-gray-600 dark:text-slate-400">{subtitle}</p>}
-                    <div class="my-8">
-                      <div class="flex items-center justify-center text-center mb-1">
-                        <span class="text-5xl">$</span>
-                        <span class="text-6xl font-extrabold">{price}</span>
+                    <div class="">
+                      <div class="flex items-end justify-start text-center mb-1 gap-2">
+                        
+                        <span class="text-3xl font-bold">${price}</span>
+                        <span class="text-sm leading-6 lowercase text-gray-600">{period}</span>
                       </div>
-                      <span class="text-base leading-6 lowercase text-gray-600 dark:text-slate-400">{period}</span>
+                      {subtitle && <p class=" text-[16px] text-left text-gray-600">{subtitle}</p>}
                     </div>
                     {items && (
-                      <ul role="list" class="my-8 md:my-10 space-y-2 text-left">
+                      <ul role="list" class=" my-6 text-left">
                         {items.map(
                           ({ description, icon }) =>
                             description && (
-                              <li class="mb-1.5 flex items-start space-x-3 leading-7">
-                                <div class="rounded-full bg-primary mt-1">
-                                  <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5 font-bold p-1 text-white" />
+                              <li class=" flex items-start gap-2 mb-2 ">
+                                <div class="rounded-full bg-transparent mt-1">
+                                  <Icon name={icon ? icon : 'tabler:check'} class="w-3 h-3 font-bold text-green-500" />
                                 </div>
-                                <span>{description}</span>
+                                <span class=" text-sm text-gray-600 ">{description}</span>
                               </li>
                             )
                         )}
@@ -64,11 +64,11 @@ const {
                     )}
                   </div>
                   {callToAction && (
-                    <div class={`flex justify-center`}>
+                    <div class={` text-[16px] flex justify-center hover:bg-blue-800  border-none bg-blue-600 text-white rounded-md py-2 ${hasRibbon ? 'btn-primary' : ''}`}>
                       {typeof callToAction === 'string' ? (
                         <Fragment set:html={callToAction} />
                       ) : (
-                        callToAction && callToAction.href && <Button {...hasRibbon ? { variant:'primary' } : {}} {...callToAction}/>
+                        callToAction && callToAction.text && callToAction.href && <CTA callToAction={callToAction} />
                       )}
                     </div>
                   )}

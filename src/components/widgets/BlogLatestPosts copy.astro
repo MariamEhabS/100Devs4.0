@@ -1,0 +1,84 @@
+---
+import { APP_BLOG_CONFIG } from "~/utils/config";
+
+import Grid from "~/components/blog/Grid.astro";
+
+import { getBlogPermalink } from "~/utils/permalinks";
+import { findLatestPosts } from "~/utils/blog";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import type { Widget } from "~/types";
+
+export interface Props extends Widget {
+  title?: string;
+  linkText?: string;
+  linkUrl?: string | URL;
+  information?: string;
+  count?: number;
+}
+
+const {
+  title = await Astro.slots.render("title"),
+  linkText = "View all posts",
+  linkUrl = getBlogPermalink(),
+  information = await Astro.slots.render("information"),
+  count = 4,
+
+  id,
+  // isDark = false,
+  classes = {},
+  bg = await Astro.slots.render("bg"),
+} = Astro.props;
+
+const posts = APP_BLOG_CONFIG.isEnabled ? await findLatestPosts({ count }) : [];
+---
+
+{
+  APP_BLOG_CONFIG.isEnabled ? (
+    <WidgetWrapper id={id}  containerClass={classes?.container} bg={bg}>
+      <h1 class="flex justify-center text-4xl font-[800] text-center max-w-xl m-0 mx-auto">The most innovative businesses choose 100devs</h1>
+      <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+        {title && (
+          <div  class="md:max-w-sm ">
+            <h2
+              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+              set:html={title}
+            />
+            {APP_BLOG_CONFIG.list.isEnabled && linkText && linkUrl && (
+              <a
+                class="text-muted hover:text-primary transition ease-in duration-200 block mb-6 lg:mb-0"
+                href={linkUrl}
+              >
+                {linkText} »
+              </a>
+            )}
+          </div>
+        )}
+
+        {information && <p class="text-muted lg:text-sm lg:max-w-md" set:html={information} />}
+      </div>
+      <div class="mb-12 md:mb-16">
+				<ul class="flex flex-wrap justify-center text-sm font-medium -m-2">
+					<li class="m-2">
+						<a class="inline-flex text-center text-gray-100 py-2 px-4 rounded-full bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out" href="#0">Developers</a>
+					</li>
+					<li class="m-2">
+						<a class="inline-flex text-center text-gray-800 py-2 px-4 rounded-full bg-white hover:bg-gray-100 shadow-sm transition duration-150 ease-in-out" href="#0">SaaS</a>
+					</li>
+					<li class="m-2">
+						<a class="inline-flex text-center text-gray-800 py-2 px-4 rounded-full bg-white hover:bg-gray-100 shadow-sm transition duration-150 ease-in-out" href="#0">Web Agencies</a>
+					</li>
+					<li class="m-2">
+						<a class="inline-flex text-center text-gray-800 py-2 px-4 rounded-full bg-white hover:bg-gray-100 shadow-sm transition duration-150 ease-in-out" href="#0">E-Commerce</a>
+					</li>
+					<li class="m-2">
+						<a class="inline-flex text-center text-gray-800 py-2 px-4 rounded-full bg-white hover:bg-gray-100 shadow-sm transition duration-150 ease-in-out" href="#0">Startups</a>
+					</li>
+				</ul>
+			</div>
+
+      <Grid posts={posts} />
+    </WidgetWrapper>
+  ) : (
+    <Fragment />
+  )
+}

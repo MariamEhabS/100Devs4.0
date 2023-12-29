@@ -1,0 +1,58 @@
+---
+import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import type { CallToAction, Widget } from '~/types';
+import Headline from '../ui/Headline.astro';
+
+interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  callToAction?: CallToAction;
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  callToAction = await Astro.slots.render('callToAction'),
+
+  id,
+  // isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props as Props;
+---
+
+<WidgetWrapper id={id} containerClass={`max-w-6xl mx-auto  ${classes?.container ?? ''}`} bg={bg}>
+  <div
+    class="flex flex-col md:flex-row justify-between items-center m-0 mx-auto bg-gray-900 rounded py-8  md:py-14 shadow-2xl max-w-5xl"
+  >
+    <Headline
+      title={title}
+      subtitle={subtitle}
+      tagline={tagline}
+      classes={{
+        container: ' mb-0 md:mb-0 !text-left',
+        title: 'text-3xl md:text-3xl font-bold text-white max-w-sm  text-center md:text-left md:-ml-[100px]',
+        subtitle: 'text-lg text-white opacity-75',
+      }}
+    />
+    {
+      typeof callToAction === 'string' ? (
+        <Fragment set:html={callToAction} />
+      ) : (
+        callToAction &&
+        callToAction.text &&
+        callToAction.href && (
+          <div class="mt-6 md:mt-0 max-w-xs mx-auto ">
+            <a class=" btn outline-none border-none text-white bg-blue-600 hover:bg-blue-700 rounded-[4px] md:-mr-[100px] text-sm w-34 h-11" href={callToAction.href} target="_blank" rel="noopener">
+              {callToAction.icon && <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" />}
+              {callToAction.text}
+            </a>
+          </div>
+        )
+      )
+    }
+  </div>
+</WidgetWrapper>

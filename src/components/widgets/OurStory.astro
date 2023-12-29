@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+
+---
+
+<Fragment>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="pb-12 md:pb-20">
+
+            <div class="max-w-[38rem] mx-auto">
+                <h3 class=" text-3xl font-bold leading-tight tracking-tight mb-4">Our story</h3>
+                <p class="text-base text-gray-600 mb-8">
+                    When the pandemic hit, a small community of developers formed to help those affected learn new skills and get jobs as software engineers. We've since grown into a global community 60,000+ strong striving to provide free stipened job training for anyone anywhere. We want to help you unlock a family sustaning career and believe that you should not have take food off the table or money out of your pocket to make that happen. 
+                </p>
+                <p class="text-base text-gray-600 mb-8">
+                    At 100Devs, we're not just a platform for learning web development; we're a community that supports and uplifts one another. We celebrate the triumphs, work through the challenges, and grow together. We believe in the power of collaboration, and together, we're building a future where software engineering is accessible to all. All is the keyword - not everyone has the privilage of free time, so were also building a first of its class digital agency where all funds go directly to folx completing #100Devs. We want the Uber Drivers, Doordashers, the folx for whom free time must be spent earning to have the privilage of their learning time being paid. This is a huge goal, were not there yet, but we hope you will join us as we build together. 
+                </p>
+            </div>
+
+            <div class="sm:flex">
+                <figure class="flex shrink-0 max-w-none sm:max-w-xs lg:max-w-none mb-8 sm:mb-0">
+                    <Image 
+                        class="grow self-start rounded" 
+                        src={"/images/discord-call.png"} 
+                        alt="About us 02" 
+                        decoding="async"
+                        loading="lazy"
+                        width={'400'}
+                        height={'400'}
+                    />
+                </figure>
+                <div class="sm:ml-8 lg:ml-16">
+                    <h4 class="text-2xl font-bold leading-tight tracking-tight mb-4">Next Cohort Starts: Jan 23, 2024</h4>
+                    <p class="text-base text-gray-600 mb-6">
+                        We will be running a live intensive full stack web development bootcamp covering everything you need to know to go from no technical skills to employable. We’ll meet every Tuesday and Thursday from 5:30pm EST to 8:30pm EST with office hours on Sundays from 4pm EST to 6pm EST. The goal is to give folx in need of a family sustaining career the tools they need to command a job in software engineering.
+                    </p>
+                    <div class="flex  mb-8 ">
+                        <Image 
+                            class="rounded-full self-start shrink-0 shadow-lg" 
+                            src={"/images/team-member-01.jpg"} 
+                            alt="Logo" 
+                            decoding="async"
+                            loading="lazy"
+                            width={40}
+                            height={40}
+                        />
+                        <div>
+                            <blockquote class="text-[0.9rem] text-gray-600 italic">
+                                “ I was in a dead end job at 30, married starting a family. Was trying to make a change, then the pandemic hit and I tossed around the idea of learning to program. I saw Leon’s post on reddit and thought it was a scam I’m not gunna lie. Through his lessons and hard work and many many frustrated nights I’m a software engineer. Its all thanks to Leon and 100Devs my life has completely changed. “
+                            </blockquote>
+                            <div class="text-sm font-medium text-gray-600 mt-2">
+                                <cite class="text-[0.9rem] text-gray-900 not-italic">Izzy</cite> · <a class="text-[0.9rem] text-blue-600" href="#0">Nation Safe Auto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-[42rem] mx-auto">
+                <p class="text-base text-gray-600 mb-4">
+                    This course is taught live and demands ~20+ hours a week of your time. We’ve helped thousands of people learn to code and helped hundreds get jobs as software engineers. Within six weeks you will be freelancing and earning based on you new skills. Our hope is that by the end of our year long program you have secured a family sustaining engineering job or are able to use client work to supplement your current earnings to build the life you desire. 
+                </p>
+            </div>
+
+            <div class="max-w-[42rem] mx-auto">
+                <p class="text-base text-gray-600">
+                    To be perfectly clear, the job market for developers right now is tough. Through #100Devs you will get real clients, build large custom portfolio ready fullstack web applications, volunteer with grassroots orginizations, contribute to open source, complete hundreds of coding challenges, work on large development teams to ship real products, and build a network that most other job applicants won't put the work into achieving. This is how we are able to consistantly get our alumni jobs. It's not magic, just a fuckton of work that most people don't have the privilage or desire to complete.  
+                </p>
+            </div>
+        </div>
+    </div>
+  </Fragment>

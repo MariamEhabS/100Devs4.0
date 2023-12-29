@@ -16,19 +16,19 @@ const { post } = Astro.props;
 const image = (await findImage(post.image));
 ---
 
-<article class="mb-6 transition">
-  <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6">
+<article data-aos="zoom-in" class="relative flex flex-col justify-start mb-6 transition col-span-1 ">
+  
+  <div class="relative md:h-56 bg-gray-400 rounded shadow-lg mb-12">
+    
     {
       image && (
         <a href={getPermalink(post.permalink, 'post')}>
           <Image
             src={image}
-            class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900]}
-            width={400}
-            sizes="(max-width: 900px) 400px, 900px"
+            class="object-cover w-full h-[255px] rounded shadow-lg bg-gray-400"
+            width={352}
+            height={198}
             alt={post.title}
-            aspectRatio="16:9"
             layout="cover"
             loading="lazy"
             decoding="async"
@@ -37,19 +37,46 @@ const image = (await findImage(post.image));
       )
     }
   </div>
-  <h3 class="mb-2 text-xl font-bold leading-tight sm:text-2xl font-heading">
+
+  <ul class="flex flex-wrap text-xs font-medium pb-3">
+    <li class="m-1">
+      <a class="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out capitalize text-xs " href="#0">{post.category}</a>
+    </li>
+  </ul>
+
+  <h3 class=" mb-11 font-bold sm:text-lg ">
     {
       !APP_BLOG?.post?.isEnabled ? (
         post.title
       ) : (
         <a
           href={getPermalink(post.permalink, 'post')}
-          class="hover:text-primary dark:hover:text-blue-700  transition ease-in duration-200"
+          class="hover:text-primary text-xl leading-tight hover:text-blue-700  transition ease-in duration-200 "
         >
           {post.title}
         </a>
       )
     }
   </h3>
-  <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>
+  <footer class="absolute bottom-0 text-sm flex items-center ">
+    <div class="flex shrink-0 mr-3">
+      <a class="relative" href="#0">
+        <span class="absolute inset-0 -m-px" aria-hidden="true"><span class="absolute inset-0 -m-px bg-white rounded-full"></span></span>
+        <Image 
+          class="relative rounded-full" 
+          src={`/images/leon-headshot.png`} 
+          alt="Author - Leon Noel" 
+          decoding="async"
+          loading="lazy"
+          width={32}
+          height={32}
+        />  
+      </a>
+    </div>
+    <div>
+      <span class="text-gray-600 text-sm">By </span>
+      <a class="font-medium hover:underline sm" href="#0">Leon Noel</a>
+    </div>
+  </footer>
+
 </article>

@@ -50,5 +50,13 @@ const { language, textDirection } = I18N;
         content-visibility: auto;
       }
     </style>
+    <script is:inline>
+      import { aosInit } from "@js/aos";
+  
+      // runs on initial page load
+      aosInit();
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
   </body>
 </html>
