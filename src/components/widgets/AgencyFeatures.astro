@@ -20,16 +20,16 @@ import { Image } from 'astro:assets';
 			<!-- Section header -->
 
         <div class="max-w-3xl w-full mx-auto text-center pb-12 md:pb-16">
-          <p class="text-[42px] leading-tight md:text-[46px] pb-4 font-[800]">How Our Agency Works</p>
-          <p class="text-xl md:text-lg md:leading-tight  text-gray-600">Expect world class development lead by the industries best engineers.</p>
-          <p class="text-xl md:text-lg md:leading-tight  text-gray-600"> Post launch we grow with you. Submit a ticket and have it turned into live code.</p>
+          <p class="text-[42px] leading-tight md:text-[51px] pb-4 font-[800]">How Our Agency Works</p>
+          <p class="text-xl md:leading-tight lg:leading-normal text-gray-600">Expect world class development lead by the industries best engineers.</p>
+          <p class="text-xl md:leading-tight lg:leading-snug text-gray-600"> Post launch we grow with you. Submit a ticket and have it turned into live code.</p>
         </div>
 
 
 			<!-- Top image -->
      <div class=" pb-12 md:pb-16"> 
         <Image 
-          class="m-0 mx-auto" 
+          class="m-0 mx-auto " 
           src={"/images/features-top-image.png"} 
           alt="Features top" 
           decoding="async"
@@ -43,15 +43,15 @@ import { Image } from 'astro:assets';
 			 <div class="flex flex-col md:flex-row max-w-6xl  gap-10 md:gap-0" x-data="{ tab: '1' }"> 
 
 				<!-- Content -->
-				 <div class="max-w-max  md:w-full mx-auto md:col-span-2 ">
-            <div class=" mb-6  ">
-              <h3 class="text-3xl mb-4 font-bold">Community Built</h3>
+				 <div class="max-w-max lg:max-w-none md:w-full mx-auto md:col-span-2  mt-6 lg:mt-6 ">
+            <div class="  md:pr-4 lg:pr-12 xl:pr-16 mb-8 ">
+              <h3 class="text-3xl lg:text-[2.0rem] mb-4 font-bold">Community Built</h3>
 
-              <p class="text-xl text-gray-600 ">We're a developer community for hire. Built in community, product managers, designers, beta testers, early adopters, and everything you need for a successful launch!</p>
+              <p class="text-xl text-gray-600 lg:max-w-[83%] ">We're a developer community for hire. Built in community, product managers, designers, beta testers, early adopters, and everything you need for a successful launch!</p>
             </div> 
 					<!-- Tabs buttons -->
 				 <!-- <div class=" mb-8 md:mb-0 md:m-0 md:mx-auto w-fit">                         -->
-          <div class="  max-w-[31rem]  md:mb-0 ">                        
+          <div class="  max-w-[34rem] lg:max-w-[33.7rem]  md:mb-0 ">                        
 						<button
 							:class="tab !== '1' ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'"
 							class="text-left flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3"
@@ -59,10 +59,10 @@ import { Image } from 'astro:assets';
 							@click="tab = '1'"
 						>
 							<div class="max-w-[500px]">
-                <p class="font-bold text-lg leading-snug tracking-tight pb-1 ">
+                <p class="font-bold text-lg leading-snug tracking-tight pb-1  ">
                   Building The Minium Viable Product
                 </p>
-                <p class="text-gray-600 text-lg  leading-normal">
+                <p class="text-gray-600 text-lg  leading-normal lg:leading-7">
                   We help you plan, design, and develop the first working version of your application.
                 </p>
               
@@ -83,7 +83,7 @@ import { Image } from 'astro:assets';
               <p class="font-bold text-lg leading-snug tracking-tight pb-1 ">
                 Building Based On Feedback
               </p>
-              <p class="text-gray-600 text-lg  leading-normal">
+              <p class="text-gray-600 text-lg  leading-normal lg:leading-7">
                 Once our community helps launch your product, we iterate weekly to improve the application.
               </p>
             
@@ -104,7 +104,7 @@ import { Image } from 'astro:assets';
               <p class="font-bold text-lg leading-snug tracking-tight pb-1">
                 Building As A Service
               </p>
-              <p class="text-gray-600 text-lg  leading-normal">
+              <p class="text-gray-600 text-lg  leading-normal lg:leading-7">
                 Share what you need done and our global community completes your request in 1-3 business days.
               </p>
             
@@ -139,7 +139,7 @@ import { Image } from 'astro:assets';
                     alt="Features bg" 
                     decoding="async"
                     loading="lazy"
-                    width={450}
+                    width={500}
                     height={375}
                   />
                   <Image 
@@ -189,7 +189,7 @@ import { Image } from 'astro:assets';
                     alt="Features bg" 
                     decoding="async"
                     loading="lazy"
-                    width={450}
+                    width={500}
                     height={375}
                   />
                   <Image 
@@ -239,7 +239,7 @@ import { Image } from 'astro:assets';
                     alt="Features bg" 
                     decoding="async"
                     loading="lazy"
-                    width={450}
+                    width={500}
                     height={375}
                   />
                   <Image 

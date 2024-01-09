@@ -1,9 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import CTA from '~/components/ui/CTA.astro';
 import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Pricing } from '~/types';
+import CheckMarkIcon from '../ui/CheckMarkIcon.astro';
 
 const {
   title = '',
@@ -18,16 +20,16 @@ const {
 } = Astro.props as Pricing;
 ---
 
-<WidgetWrapper id={id}  containerClass={`max-w-5xl mx-auto  ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper id={id}  containerClass={`max-w-7xl mx-auto mx-6 ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
   <div class="flex items-stretch justify-center ">
-    <div class="grid grid-cols-4  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-6">
+    <div class="grid grid-cols-4  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4  gap-8 lg:gap-6  lg:max-w-[69rem]">
       {
         prices &&
           prices.map(({ title, subtitle, price, period, items, callToAction, hasRibbon = false, ribbonTitle }) => (
             <div class={`col-span-4 mx-auto flex  sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1`}>
               {price && period && (
-                <div class={`flex flex-col rounded-[4px] backdrop-blur border-2 border-white   bg-white shadow-xl px-5 py-5 w-full  justify-between text-center  ${hasRibbon && ribbonTitle && '!border-blue-600 !bg-blue-100'}`}>
+                <div class={`flex flex-col  rounded backdrop-blur border-2 border-white   bg-white shadow-xl px-5 py-5 w-full  justify-between text-center  ${hasRibbon && ribbonTitle && '!border-blue-600 !bg-blue-100'}`}>
                   {hasRibbon && (
                     <div class="absolute top-0 right-0 mr-5 p-3 -mt-5 bg-yellow-500 rounded-full">
                       <svg class="w-3 h-3 fill-current text-white" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -35,9 +37,9 @@ const {
                       </svg>
                     </div>
                   )}
-                  <div class="border-b border-b-gray-200 mb-6">
+                  <div class="">
                     {title && (
-                      <h3 class="text-left !text-base font-bold ">{title}</h3>
+                      <h3 class="text-left text-base font-bold lg:text-lg lg:leading-tight ">{title}</h3>
                     )}
                     <div class="">
                       <div class="flex items-end justify-start text-center mb-1 gap-2">
@@ -53,8 +55,8 @@ const {
                           ({ description, icon }) =>
                             description && (
                               <li class=" flex items-start gap-2 mb-2 ">
-                                <div class="rounded-full bg-transparent mt-1">
-                                  <Icon name={icon ? icon : 'tabler:check'} class="w-3 h-3 font-bold text-green-500" />
+                                <div class="rounded-full bg-transparent ">
+                                  <CheckMarkIcon />
                                 </div>
                                 <span class=" text-sm text-gray-600 ">{description}</span>
                               </li>
@@ -63,8 +65,9 @@ const {
                       </ul>
                     )}
                   </div>
-                  {callToAction && (
-                    <div class={` text-[16px] flex justify-center hover:bg-blue-800  border-none bg-blue-600 text-white rounded-md py-2 ${hasRibbon ? 'btn-primary' : ''}`}>
+                  <div class={` ${hasRibbon && ribbonTitle ? '!border-t !border-t-gray-300' : ''} !border-t !border-t-gray-200 pt-6`}>
+                    {callToAction && (
+                    <div class={` text-[16px] flex justify-center hover:bg-blue-800  bg-blue-600 text-white rounded-md py-2  ${hasRibbon ? 'btn-primary' : ''}`}>
                       {typeof callToAction === 'string' ? (
                         <Fragment set:html={callToAction} />
                       ) : (
@@ -72,6 +75,9 @@ const {
                       )}
                     </div>
                   )}
+                  
+                    </div>
+                  
                 </div>
               )}
             </div>

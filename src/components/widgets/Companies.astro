@@ -6,14 +6,14 @@ import { Image } from 'astro:assets';
 ---
 
 <div class="bg-blue-200 bg-opacity-25">
-  <div class="mx-auto max-w-6xl lg:max-w-7xl  py-16 px-4 sm:py-20 sm:px-6 lg:px-8 lg:py-24">
+  <div class="mx-auto max-w-6xl lg:max-w-7xl  py-16 px-4 sm:py-20 sm:px-6 lg:px-10 lg:py-24">
     <div class="lg:grid lg:grid-cols-2 lg:gap-8">
       <h2 class="  mx-auto max-w-md text-center text-3xl font-bold tracking-tight text-blue-900 lg:max-w-7xl lg:text-left">The world's most innovative companies hire our developers</h2>
       <div class="mt-8 flow-root self-center lg:mt-0">
         <div class="-mt-4 -ml-8 flex flex-wrap justify-between lg:-ml-4">
           <div class="mt-4 ml-8 flex flex-shrink-0 flex-grow justify-center lg:ml-4 lg:flex-grow-0">
               <Image 
-              class="h-8" 
+              class="h-8 lg:w-36" 
               src={"/images/company-chownow.svg"} 
               alt="chownow logo" 
               decoding="async"
@@ -24,7 +24,7 @@ import { Image } from 'astro:assets';
             </div>
             <div class="mt-4 ml-8 flex flex-shrink-0 flex-grow justify-center lg:ml-4 lg:flex-grow-0">
               <Image 
-              class="h-8" 
+              class="h-8 lg:w-36" 
               src={"/images/company-amazon-web-services.svg"} 
               alt="amazon logo" 
               decoding="async"
@@ -35,7 +35,7 @@ import { Image } from 'astro:assets';
             </div>
             <div class="mt-4 ml-8 flex flex-shrink-0 flex-grow justify-center lg:ml-4 lg:flex-grow-0">
               <Image 
-              class="h-8" 
+              class="h-8 lg:w-36" 
               src={"/images/company-linkedin.svg"} 
               alt="linkedin logo" 
               decoding="async"

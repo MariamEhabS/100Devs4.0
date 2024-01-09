@@ -8,15 +8,15 @@ import {teamMembers} from "./TeamMembers.astro";
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class=" flex flex-col items-center pt-12 md:pt-20">
             <!-- Section header -->
-            <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h2 class="!text-[2.4rem] font-extrabold ">The humans behind the community</h2>
+            <div class="max-w-3xl mx-auto text-center pb-20 md:pb-20">
+                <h2 class="text-3xl px-6 font-extrabold ">The humans behind the community</h2>
             </div>
             <!-- Team member info -->
             <div class="  w-full  mx-auto sm:flex sm:flex-wrap sm:justify-center -my-6 sm:-my-8 " data-aos-id-team >
                 <div class=" grid grid-cols-1 gap-x-8 gap-y-8 md:gap-y-14 md:gap-x-10 md:grid-cols-3  w-full" >    
                 {
                     teamMembers.map((member) => (
-                        <div class="py-2  ">
+                        <div class="py-2 px-4 ">
                             <div class="flex flex-col items-center">
                                 <Image 
                                     class="rounded-full mb-4" 
@@ -28,16 +28,16 @@ import {teamMembers} from "./TeamMembers.astro";
                                     height={110}
                                 />
                                 <h4 class="text-lg font-bold mb-1">{member?.name}</h4>
-                                <div class="text-sm text-blue-600 font-medium mb-2">{member?.position}</div>
-                                <p class="text-sm text-gray-600 text-center mb-3 w-8/12 md:w-4/5">{member?.bio}</p>
+                                <div class="text-base font-medium text-blue-600  mb-2">{member?.position}</div>
+                                <p class="text-base text-gray-600 text-center mb-3  md:w-4/5">{member?.bio}</p>
                                 <div class="text-sm text-gray-600 font-medium">
-                                    <a class="text-xs text-gray-900 hover:underline" href={member?.twitter}>
+                                    <a class="text-sm text-gray-900 hover:underline" href={member?.twitter}>
                                         Twitter
                                     </a> · 
-                                    <a class="text-xs text-gray-900 hover:underline" href={member?.github}>
+                                    <a class="text-sm text-gray-900 hover:underline" href={member?.github}>
                                         GitHub
                                     </a> · 
-                                    <a class="text-xs text-gray-900 hover:underline" href={member?.linkedin}>
+                                    <a class="text-sm text-gray-900 hover:underline" href={member?.linkedin}>
                                         LinkedIn
                                     </a>
                                 </div>

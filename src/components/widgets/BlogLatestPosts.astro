@@ -36,7 +36,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
 {
   APP_BLOG.isEnabled ? (
     <WidgetWrapper id={id}  containerClass={classes?.container} bg={bg}>
-      <h1 class="flex justify-center text-[2.0rem] leading-tight font-[800] text-center m-0 mx-auto">The most innovative businesses choose 100devs</h1>
+      <p class="flex justify-center text-[2.0rem] lg:text-[41.5px] lg:leading-tight  font-extrabold text-center m-0 mx-auto max-w-2xl">The most innovative businesses choose 100devs</p>
       <div class="flex flex-col lg:justify-between lg:flex-row mb-12">
         {title && (
           <div class="md:max-w-sm">
@@ -52,8 +52,8 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
 
         {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
       </div>
-      <div class="mb-12 md:mb-16">
-				<ul class="flex flex-wrap justify-center text-sm font-medium -m-2">
+      <div class="mb-12 md:mb-16 lg:pt-8  ">
+				<ul class="flex flex-wrap justify-center text-sm font-medium -m-2 ">
 					<li class="m-2">
 						<a class="inline-flex text-center text-gray-100 py-2 px-4 rounded-full bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out" href="#0">Developers</a>
 					</li>
