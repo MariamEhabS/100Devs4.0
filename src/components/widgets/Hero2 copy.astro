@@ -1,7 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
-import { CallToAction } from '~/types';
+import type { CallToAction } from '~/types';
+// import { CallToAction } from '~/types';
 
 export interface Props {
   title?: string;
@@ -39,13 +40,13 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading "
               set:html={title}
             />
           )
         }
         <div class="max-w-3xl mx-auto lg:max-w-none">
-          {subtitle && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
+          {subtitle && <p class="text-xl text-muted mb-6 " set:html={subtitle} />}
           <div
             class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl"
           >

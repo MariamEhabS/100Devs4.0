@@ -24,9 +24,9 @@ const {
 } = Astro.props as Props;
 ---
 
-<WidgetWrapper id={id} containerClass={`max-w-6xl mx-auto  ${classes?.container ?? ''}`} bg={bg}>
+<div id={id} containerClass={`max-w-6xl mx-auto  ${classes?.container ?? ''}`} bg={bg}>
   <div
-    class="flex flex-col lg:flex-row justify-center items-center m-0 mx-auto bg-blue-600 rounded py-8  lg:py-14 shadow-2xl max-w-5xl"
+    class="flex flex-col lg:flex-row justify-center items-center m-0 mx-auto bg-blue-600 rounded py-8  lg:py-14 lg:my-10 shadow-2xl max-w-5xl"
   >
     <Headline
       title={title}
@@ -55,4 +55,4 @@ const {
       )
     }
   </div>
-</WidgetWrapper>
+</div>

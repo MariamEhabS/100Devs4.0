@@ -3,6 +3,7 @@ import Headline from '~/components/ui/Headline.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Faqs } from '~/types';
+import CustomWidgetWrapper from '../ui/CustomWidgetWrapper.astro';
 
 const {
   title = '',
@@ -18,16 +19,25 @@ const {
 } = Astro.props as Faqs;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
-  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+<CustomWidgetWrapper id={id} containerClass={`max-w-6xl mx-auto lg:pt-44 ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} class="text-6xl" />
   <ItemGrid
     items={items}
     columns={columns}
-    defaultIcon="tabler:chevron-right"
+    defaultIcon="tabler:arrow-down-right"
     classes={{
-      container: `${columns === 1 ? 'max-w-4xl' : ''} gap-y-8 md:gap-y-12`,
+      container: `${columns === 1 ? 'max-w-4xl' : ''} gap-y-8 md:gap-y-12 lg:gap-x-20 `,
       panel: 'max-w-none',
-      icon: 'flex-shrink-0 mt-1 w-6 h-6 text-primary',
+      description: ' text-slate-400 text-base  lg:-ml-8',
+      icon: 'flex-shrink-0 mt-1 w-7 h-7 text-primary text-blue-500',
     }}
   />
-</WidgetWrapper>
+  <h1 class="m-0 mx-auto w-max mt-6">
+    <a 
+      href="/faqs" 
+      class="btn !rounded-lg text-white bg-blue-600 hover:bg-blue-700">
+      See more FAQs
+    </a>	
+  </h1>
+
+</CustomWidgetWrapper>

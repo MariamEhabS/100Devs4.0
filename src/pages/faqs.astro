@@ -1,0 +1,20 @@
+---
+// import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import FAQPage from '~/components/widgets/FAQPage.astro';
+
+const metadata = {
+	title: '#100Devs FAQs',
+	description: '#100Devs FAQs',
+	canonical: getCanonical(getHomePermalink()),
+};
+---
+
+<Layout metadata={metadata}>
+	<main class="grow">
+		<FAQPage />
+	</main>
+</Layout>

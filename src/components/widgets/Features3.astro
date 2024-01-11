@@ -4,6 +4,7 @@ import ItemGrid from '~/components/ui/ItemGrid.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Image from '~/components/common/Image.astro';
 import type { Features } from '~/types';
+import StatsItemGrid from '../ui/StatsItemGrid.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -54,13 +55,13 @@ const {
     }
   </div>
 
-  <ItemGrid
+  <StatsItemGrid
     items={items}
     columns={columns}
     defaultIcon={defaultIcon}
     classes={{
-      container: ' mt-12 ',
-      panel: 'max-w-full sm:max-w-md justify-center ' ,
+      container: ' ',
+      panel: 'max-w-full sm:max-w-md justify-center' ,
       title: 'text-3xl font-bold text-center',
       description: ' mt-1 text-center text-center ',
       icon: 'flex-shrink-0 mt-1 text-primary w-6 h-6',

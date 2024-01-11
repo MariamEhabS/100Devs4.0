@@ -27,7 +27,7 @@ const {
   items && (
     <div
       class={twMerge(
-        `grid mx-auto justify-items-center gap-y-12 gap-x-16 lg:w-max ${
+        `grid mx-auto justify-items-center gap-y-12 gap-x-10 lg:w-max ${
           columns === 4
             ? "lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2"
             : columns === 3
@@ -70,7 +70,7 @@ const {
               <div class="">
                 <h3
                   class={twMerge(
-                    "!text-[1.8rem] !font-bold text-center",
+                    "text-3xl font-bold text-center ",
                     titleClass,
                     itemClasses?.title
                   )}
@@ -80,7 +80,7 @@ const {
                 {description && (
                   <p
                     class={twMerge(
-                      `${title ? "mt-2" : ""} text-sm font-medium text-muted text-center max-w-[250px]`,
+                      `${title ? "mt-2" : ""} text-sm lg:text-base  text-muted text-center max-w-[250px]`,
                       descriptionClass,
                       itemClasses?.description
                     )}
