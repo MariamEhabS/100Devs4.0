@@ -22,13 +22,13 @@ const { tags, class: className = 'text-sm', title = undefined, isCategory = fals
       </>
       <ul class={className}>
         {tags.map((tag) => (
-          <li class="bg-gray-100  inline-block mr-2 rtl:mr-0 rtl:ml-2 mb-2 py-0.5 px-2 lowercase font-medium">
+          <li class="bg-blue-400 text-black inline-block mr-2 rtl:mr-0 rtl:ml-2 mb-2 py-0.5 px-2 lowercase font-medium">
             {!APP_BLOG?.tag?.isEnabled ? (
               tag
             ) : (
               <a
                 href={getPermalink(tag, (isCategory ? 'category' : 'tag'))}
-                class="text-muted  hover:text-blue-500 "
+                class="text-black  font-light hover:text-blue-500 "
               >
                 {tag}
               </a>

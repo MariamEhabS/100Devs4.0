@@ -83,6 +83,18 @@
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
+/* Scrollbar */
+
+.scroll-with-no-display::-webkit-scrollbar {
+	display: none;
+}
+
+.scroll-with-no-display {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
+}
+
 /* To deprecated */
 
 .dd *:first-child {

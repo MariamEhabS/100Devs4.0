@@ -22,8 +22,8 @@ const { Content } = post;
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
   <article>
     <header class={post.image ? '' : ''}>
-      <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
-        <p>
+      <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center w-max">
+        <p class=" flex items-center text-center text-base">
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 " />
           <time datetime={String(post.publishDate)} class="inline-block">{getFormattedDate(post.publishDate)}</time>
           {
@@ -41,15 +41,15 @@ const { Content } = post;
         </p>
       </div>
       <h1
-        class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
+        class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl lg:pb-6 text-center font-bold leading-tighter tracking-tighter font-heading"
       >
         {post.title}
       </h1>
-      <p
+      <!-- <p
         class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted  text-justify"
       >
         {post.excerpt}
-      </p>
+      </p> -->
 
       {
         post.image ? (
@@ -83,8 +83,8 @@ const { Content } = post;
       }
     </div>
     <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
-      <PostTags tags={post.tags} class="mr-5 rtl:mr-0 rtl:ml-5" />
-      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 " />
+      <PostTags tags={post.tags} class="mr-5 rtl:mr-0 rtl:ml-5 text-sm" />
+      <!-- <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 " /> -->
     </div>
   </article>
 </section>

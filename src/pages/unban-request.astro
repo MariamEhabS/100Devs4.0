@@ -1,0 +1,25 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getHomePermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Request an unbanned',
+};
+---
+
+
+<Layout metadata={metadata}>
+    <section class="flex items-center h-full pt-16  px-4">
+        <div class="container flex flex-col items-center justify-center mx-auto my-8">
+          <div class="max-w-3xl text-center">
+            <h2 class="mb-8 font-bold text-3xl lg:text-5xl">
+                Have you been banned? Please submit an unban request below, and we will get back to you 
+            </h2>
+                <iframe class=" w-full  " src="https://docs.google.com/forms/d/e/1FAIpQLSfX5OohN4h4hVCZ3t7GK87AypjTqgG3HNX161epbNBAQO2XLg/viewform?embedded=true" width="100" height="1591" frameborder="0" marginheight="0" marginwidth="0" >Loading…</iframe>
+    
+
+            </div>
+        </div>
+      </section>
+
+</Layout>
